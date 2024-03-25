@@ -21,7 +21,9 @@ public class Tile {
 
         private Bag(){
             for(int i = 0; i < 26; i++){
-                tiles[i] = new Tile((char)(i + 1), letterScore[i]);
+                for(int j = 0; j < letterCount[i]; j++){
+                    tiles[i] = new Tile((char)(i + 1), letterScore[i]);
+                }  
             }
         }
 
@@ -44,20 +46,22 @@ public class Tile {
         }
 
         public Tile getTile(char c){
+            int ndx = (int)(c)-1;
             if (size() == 0)
                 return null;
-            if(letterCount[(int)(c)-1] == 0)
+            if(letterCount[ndx] == 0)
                 return null;
             else{
-                letterCount[(int)(c)-1]--;
-                    return tiles[(int)(c)-1];
+                letterCount[ndx]--;
+                return tiles[ndx];
             }
         }
 
         public void put(Tile t){
-            if(letterCount[(int)(t.letter)-1]+1>letterCountDefine[(int)(t.letter)-1])
+            int ndx = (int)(t.letter)-1;
+            if(letterCount[ndx]+1>letterCountDefine[ndx])
                 return;
-            letterCount[(int)(t.letter)-1]++;
+            letterCount[ndx]++;
         }
 
         public int size(){
