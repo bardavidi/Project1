@@ -72,7 +72,7 @@ public class Tile {
         }
 
         public int[] getQuantities(){
-            int copy[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+            int[] copy = new int[26];
             for(int i = 0; i < 26; i++)
                 copy[i]=letterCount[i];
             return copy;
